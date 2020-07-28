@@ -1,0 +1,57 @@
+﻿@model Najmodavac.Models.TipSmjestaja
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>TipSmjestaja</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Vrsta" class="control-label"></label>
+                <input asp-for="Vrsta" class="form-control" />
+                <span asp-validation-for="Vrsta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grad" class="control-label"></label>
+                <input asp-for="Grad" class="form-control" />
+                <span asp-validation-for="Grad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ulica" class="control-label"></label>
+                <input asp-for="Ulica" class="form-control" />
+                <span asp-validation-for="Ulica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostanskiBroj" class="control-label"></label>
+                <input asp-for="PostanskiBroj" class="form-control" />
+                <span asp-validation-for="PostanskiBroj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrojSmjestajnihJedinica" class="control-label"></label>
+                <input asp-for="BrojSmjestajnihJedinica" class="form-control" />
+                <span asp-validation-for="BrojSmjestajnihJedinica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NazivSmjestajaFk" class="control-label"></label>
+                <select asp-for="NazivSmjestajaFk" class="form-control" asp-items="ViewBag.NazivSmjestajaFk"></select>
+                <span asp-validation-for="NazivSmjestajaFk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

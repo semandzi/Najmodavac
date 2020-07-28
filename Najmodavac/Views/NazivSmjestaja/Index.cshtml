@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Najmodavac.Models.NazivSmjestaja>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Unos</h1>
+
+<p>
+    <a asp-action="Create"><i class="fas fa-bed"></i> &nbsp; Dodaj Naziv Smjestaja</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+           <partial name="_TableButtonPartial" model="item.Id"/>
+        </tr>
+}
+    </tbody>
+</table>
