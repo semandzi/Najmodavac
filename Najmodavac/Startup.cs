@@ -31,8 +31,10 @@ namespace Najmodavac
         {
             services.AddControllersWithViews();
             services.AddDbContext<SmjestajDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                 .AddEntityFrameworkStores<SmjestajDbContext>();
+            services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                 .AddEntityFrameworkStores<SmjestajDbContext>()
+                 .AddDefaultUI()
+                 .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

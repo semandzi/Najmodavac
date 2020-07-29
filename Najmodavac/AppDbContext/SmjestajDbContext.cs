@@ -20,5 +20,6 @@ namespace Najmodavac.AppDbContext
         public DbSet<NazivSmjestaja> NaziviSmjestaja { get; set; }
         public DbSet<TipSmjestaja> TipoviSmjestaja { get; set; }
         public DbSet<Najmodavac.Models.ViewModel.NazivViewTipSmjestaja> NazivViewTipSmjestaja { get; set; }
+        public DbSet<AplicationUsers> AplicationUsers { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Najmodavac.AppDbContext;
 
 namespace Najmodavac.Migrations
 {
     [DbContext(typeof(SmjestajDbContext))]
-    partial class SmjestajDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200729120203_AddFlagToUser")]
+    partial class AddFlagToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
