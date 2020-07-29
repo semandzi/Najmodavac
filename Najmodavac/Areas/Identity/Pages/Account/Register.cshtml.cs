@@ -17,7 +17,7 @@ using Najmodavac.Models;
 
 namespace Najmodavac.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize(Roles ="Admin")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -94,9 +94,9 @@ namespace Najmodavac.Areas.Identity.Pages.Account
                         await _roleManager.CreateAsync(new IdentityRole("Admin"));
                     }
 
-                    if (!await _roleManager.RoleExistsAsync("Excutive"))
+                    if (!await _roleManager.RoleExistsAsync("Executive"))
                     {
-                        await _roleManager.CreateAsync(new IdentityRole("Excutive"));
+                        await _roleManager.CreateAsync(new IdentityRole("Executive"));
                     }
 
 
@@ -129,8 +129,9 @@ namespace Najmodavac.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        //await _signInManager.SignInAsync(user, isPersistent: false);
+                        //return LocalRedirect(returnUrl);
+                        return RedirectToAction("Index");
                     }
                 }
                 foreach (var error in result.Errors)

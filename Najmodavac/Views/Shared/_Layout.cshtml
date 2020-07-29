@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Najmodavac.Helpers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,21 +24,27 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
 
                         
-                   
+                   @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Executive))
+                   {
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Unos
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                         
+
                             <a class="nav-link text-dark" asp-area="" asp-controller="NazivSmjestaja" asp-action="Index">Naziv</a>
                             <a class="nav-link text-dark" asp-area="" asp-controller="TipSmjestaja" asp-action="Index">Tip Smjestaja</a>
+                            @if (User.IsInRole(Roles.Admin)) { 
+                            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Dodaj Korisnika</a>
+                            }
 
+                            
                         </div>
 
 
 
                     </div>
+                   }
                     <partial name="_LoginPartial"/>
                 </div>
             </div>
