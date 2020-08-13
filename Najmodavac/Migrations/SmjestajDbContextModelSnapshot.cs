@@ -243,6 +243,90 @@ namespace Najmodavac.Migrations
                     b.ToTable("NaziviSmjestaja");
                 });
 
+            modelBuilder.Entity("Najmodavac.Models.Rezervacije", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Adresa")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Drzava")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Grad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("KrajRezervacije")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PocetakRezervacije")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Prezime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SmjestajnaJedinicaFk")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SmjestajnaJedinicaFk");
+
+                    b.ToTable("Rezervacije");
+                });
+
+            modelBuilder.Entity("Najmodavac.Models.SmjestajnaJedinica", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Cijena")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("NazivSmjestajaFk")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipSmjestajaFk")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Velicina")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(5)")
+                        .HasMaxLength(5);
+
+                    b.Property<string>("Znacajke")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NazivSmjestajaFk");
+
+                    b.HasIndex("TipSmjestajaFk");
+
+                    b.ToTable("SmjestajnaJedinica");
+                });
+
             modelBuilder.Entity("Najmodavac.Models.TipSmjestaja", b =>
                 {
                     b.Property<int>("Id")
@@ -359,6 +443,30 @@ namespace Najmodavac.Migrations
                     b.HasOne("Najmodavac.Models.ViewModel.NazivViewTipSmjestaja", null)
                         .WithMany("NazivSmjestaja")
                         .HasForeignKey("NazivViewTipSmjestajaId");
+                });
+
+            modelBuilder.Entity("Najmodavac.Models.Rezervacije", b =>
+                {
+                    b.HasOne("Najmodavac.Models.SmjestajnaJedinica", "SmjestajnaJedinicaa")
+                        .WithMany()
+                        .HasForeignKey("SmjestajnaJedinicaFk")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Najmodavac.Models.SmjestajnaJedinica", b =>
+                {
+                    b.HasOne("Najmodavac.Models.NazivSmjestaja", "NazivSmjestaja")
+                        .WithMany()
+                        .HasForeignKey("NazivSmjestajaFk")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Najmodavac.Models.TipSmjestaja", "TipSmjestaja")
+                        .WithMany()
+                        .HasForeignKey("TipSmjestajaFk")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Najmodavac.Models.TipSmjestaja", b =>

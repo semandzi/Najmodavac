@@ -19,34 +19,47 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    @if (!User.IsInRole(Roles.Admin))
+                    {
+                        <a class="nav-link text-dark" asp-area="" asp-controller="PregledSmjestaja" asp-action="Index">Pregled Smjestaja</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Rezerviraj" asp-action="Index">Rezerviraj</a>
+
+                    }
                     
-                        
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                     
+                    
 
-                        
-                   @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Executive))
-                   {
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Unos
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Executive))
+                        {
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Unos
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                            <a class="nav-link text-dark" asp-area="" asp-controller="NazivSmjestaja" asp-action="Index">Naziv</a>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TipSmjestaja" asp-action="Index">Tip Smjestaja</a>
-                            @if (User.IsInRole(Roles.Admin)) { 
-                            <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Dodaj Korisnika</a>
-                            }
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="NazivSmjestaja" asp-action="Index">Naziv</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="TipSmjestaja" asp-action="Index">Tip Smjestaja</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Rezervacije" asp-action="Index">Rezervacije</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="SmjestajnaJedinica" asp-action="Index">SmjestajnaJedinica</a>
 
-                            
-                        </div>
+                                    @if (User.IsInRole(Roles.Admin))
+                                    {
+
+                                        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Dodaj Korisnika</a>
+
+                                    }
+
+                                </div>
 
 
 
+                            </div>
+                        }
+                        <partial name="_LoginPartial" />
                     </div>
-                   }
-                    <partial name="_LoginPartial"/>
-                </div>
             </div>
         </nav>
     </header>

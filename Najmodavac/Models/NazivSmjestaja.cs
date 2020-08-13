@@ -14,5 +14,8 @@ namespace Najmodavac.Models
         [Required]
         [StringLength(255)]
         public string Naziv { get; set; }
+
+        
+
     }
 }

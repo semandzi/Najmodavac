@@ -11,6 +11,10 @@
     <Compile Remove="Migrations\20200724221956_PovezivanjeNazivaSmjestajaITipaSmjestaja.Designer.cs" />
     <Compile Remove="Migrations\20200724231807_NazivTipssmjestaja.cs" />
     <Compile Remove="Migrations\20200724231807_NazivTipssmjestaja.Designer.cs" />
+    <Compile Remove="Migrations\20200812112218_AddingSmjestajnaJedinicaAndRezervacije.cs" />
+    <Compile Remove="Migrations\20200812112218_AddingSmjestajnaJedinicaAndRezervacije.Designer.cs" />
+    <Compile Remove="Migrations\20200813183911_Rezervacije-force.cs" />
+    <Compile Remove="Migrations\20200813183911_Rezervacije-force.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

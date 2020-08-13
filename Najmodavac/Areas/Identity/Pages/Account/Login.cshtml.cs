@@ -46,14 +46,15 @@ namespace Najmodavac.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name="User Name")]
+            [Display(Name="Korisnicko ime")]
             public string UserName { get; set; }
 
             [Required]
+            [Display(Name = "Lozinka")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Zapamti me?")]
             public bool RememberMe { get; set; }
         }
 

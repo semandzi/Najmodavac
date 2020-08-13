@@ -17,7 +17,7 @@ using Najmodavac.Models;
 
 namespace Najmodavac.Areas.Identity.Pages.Account
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -50,7 +50,7 @@ namespace Najmodavac.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [Display(Name = "User Name")]
+            [Display(Name = "Korisnicko ime")]
             public string UserName { get; set; }
 
 
@@ -62,14 +62,17 @@ namespace Najmodavac.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Lozinka")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Potvrdi Lozinku")]
             [Compare("Password", ErrorMessage = "Lozinke se ne podudaraju.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name = "Ako zelite dodati novom korisniku admin prava potrdite sa kvacicom.")]
             public bool IsAdmin { get; set; }
+
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -108,7 +111,7 @@ namespace Najmodavac.Areas.Identity.Pages.Account
                     else
                     {
 
-                        await _userManager.AddToRoleAsync(user, "Excutive");
+                        await _userManager.AddToRoleAsync(user, "Executive");
                     }
                     _logger.LogInformation("User created a new account with password.");
 

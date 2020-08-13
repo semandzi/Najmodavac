@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Najmodavac.AppDbContext
 {
-    public class SmjestajDbContext:IdentityDbContext<IdentityUser>
+    public class SmjestajDbContext : IdentityDbContext<IdentityUser>
     {
-        public SmjestajDbContext(DbContextOptions<SmjestajDbContext> options):base(options)
+        public SmjestajDbContext(DbContextOptions<SmjestajDbContext> options) : base(options)
         {
 
         }
@@ -21,5 +21,9 @@ namespace Najmodavac.AppDbContext
         public DbSet<TipSmjestaja> TipoviSmjestaja { get; set; }
         public DbSet<Najmodavac.Models.ViewModel.NazivViewTipSmjestaja> NazivViewTipSmjestaja { get; set; }
         public DbSet<AplicationUsers> AplicationUsers { get; set; }
+
+        public DbSet<SmjestajnaJedinica> SmjestajnaJedinica { get; set; }
+        public DbSet<Rezervacije> Rezervacije { get; set; }
+        public object Rezerviraj { get; internal set; }
     }
 }
