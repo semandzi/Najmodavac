@@ -7,7 +7,7 @@
 <h1>Rezervacije</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Dodaj Novu</a>
 </p>
 <table class="table">
     <thead>
@@ -67,7 +67,9 @@
                 @Html.DisplayFor(modelItem => item.SmjestajnaJedinicaa.Naziv)
             </td>
             <td>
-                <partial name="_TableButtonPartial" model="item.Id" />
+                
+                        <partial name="_TableButtonPartial" model="item.Id" />
+                
             </td>
         </tr>
 }

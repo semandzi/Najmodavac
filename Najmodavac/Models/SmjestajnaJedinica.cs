@@ -33,8 +33,8 @@ namespace Najmodavac.Models
         [Display(Name = "Objekt")]
         public NazivSmjestaja NazivSmjestaja { get; set; }
 
-       
 
+        [Display(Name = "Objekt")]
         [ForeignKey("NazivSmjestaja")]
         public int NazivSmjestajaFk { get; set; }
 
@@ -44,12 +44,11 @@ namespace Najmodavac.Models
         [Display(Name = "Grad")]
         public TipSmjestaja TipSmjestaja { get; set; }
 
-       
 
+        [Display(Name = "Grad")]
         [ForeignKey("TipSmjestaja")]
         public int TipSmjestajaFk { get; set; }
 
-        
-        
+       
     }
 }

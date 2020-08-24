@@ -34,11 +34,14 @@ namespace Najmodavac.Models
         [Display(Name = "Kraj Rezervacije")]
         public DateTime KrajRezervacije { get; set; }
 
+
         [Display(Name = "Smjestajna Jedinica")]
 
         public SmjestajnaJedinica SmjestajnaJedinicaa { get; set; }
 
         [ForeignKey("SmjestajnaJedinicaa")]
+        [Display(Name = "Smjestajna Jedinica")]
+
         public int SmjestajnaJedinicaFk { get; set; }
 
 
